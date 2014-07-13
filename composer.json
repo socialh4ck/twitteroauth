@@ -17,5 +17,6 @@
 		"psr-0": {
 			"Socialh4ck\\Twitter": ""
 		}
-	}
+	},
+	"minimum-stability": "dev"
 }
