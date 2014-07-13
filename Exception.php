@@ -1,4 +1,4 @@
-<?php namespace Socialh4ck\Twitter;
+<?php namespace Socialh4ck\TwitterOauth;
 
 /**
  * Twitter Exception class
