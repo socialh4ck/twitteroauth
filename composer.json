@@ -12,10 +12,10 @@
 		"php": ">=5.4.0",
 		"ext-curl": "*"
 	},
-	"target-dir": "Socialh4ck/Twitter",
+	"target-dir": "Socialh4ck/TwitterOauth",
 	"autoload": {
 		"psr-0": {
-			"Socialh4ck\\Twitter": ""
+			"Socialh4ck\\TwitterOauth": ""
 		}
 	},
 	"minimum-stability": "dev"
