@@ -1,0 +1,21 @@
+{
+	"name": "socialh4ck/twitteroauth",
+	"type": "library",
+	"description": "PHP Twitter is a (wrapper)class to communicate with Twitter.",
+	"authors": [
+		{
+			"name": "socialh4ck",
+			"email": "eflorez@socialh4ck.com"
+		}
+	],
+	"require": {
+		"php": ">=5.2.0",
+		"ext-curl": "*"
+	},
+	"target-dir": "Socialh4ck/Twitter",
+	"autoload": {
+		"psr-0": {
+			"Socialh4ck\\Twitter": ""
+		}
+	}
+}
