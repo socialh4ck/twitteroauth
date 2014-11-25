@@ -2683,7 +2683,7 @@ class Twitter
 			!array_key_exists('last_id', $parameters) && 
 			!array_key_exists('slug', $parameters) && 
 			!array_key_exists('user_id', $parameters) && 
-			!array_key_exists('screen_name', $parameters) && 
+			!array_key_exists('screen_name', $parameters)
 		) {
 			throw new Exception('Parameter required missing : list_id, slug, user_id, screen_name');
 		}
@@ -2766,7 +2766,7 @@ class Twitter
 			!array_key_exists('last_id', $parameters) && 
 			!array_key_exists('slug', $parameters) && 
 			!array_key_exists('user_id', $parameters) && 
-			!array_key_exists('screen_name', $parameters) && 
+			!array_key_exists('screen_name', $parameters)
 		) {
 			throw new Exception('Parameter required missing : list_id, slug, user_id, screen_name');
 		}
@@ -2825,7 +2825,7 @@ class Twitter
 			!array_key_exists('last_id', $parameters) && 
 			!array_key_exists('slug', $parameters) && 
 			!array_key_exists('user_id', $parameters) && 
-			!array_key_exists('screen_name', $parameters) && 
+			!array_key_exists('screen_name', $parameters)
 		) {
 			throw new Exception('Parameter required missing : list_id, slug, user_id, screen_name');
 		}
