@@ -2509,148 +2509,463 @@ class Twitter
     }
 
 // Lists resources
-    /**
-     * Not implemented yet
-     */
-    public function listsList()
+    public function listsList($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. [user_id:required, screen_name:optional, reverse: true/false]');
+        }
+		
+        // make the call
+        return $this->doCall('lists/list.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsStatuses()
+    public function listsStatuses($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				owner_screen_name:optional,
+				owner_id:optional,
+				since_id:optional,
+				max_id:optional,
+				count:optional,
+				include_entities:optional,
+				include_rts:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/statuses.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsMembersDestroy()
+    public function listsMembersDestroy($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				user_id:optional, 
+				screen_name:optional,
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters) || 
+			!array_key_exists('owner_screen_name', $parameters) || 
+			!array_key_exists('owner_id', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id, slug, owner_screen_name or owner_id');
+		}
+		
+        // make the call
+        return $this->doCall('lists/members/destroy.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsMemberships()
+    public function listsMemberships($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				user_id:optional, 
+				screen_name:optional,
+				count:optional,
+				curso:optional,
+				filter_to_owned_lists:optional
+			]');
+        }
+		
+        // make the call
+        return $this->doCall('lists/memberships.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsSubscribers()
+    public function listsSubscribers($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				owner_screen_name:optional,
+				owner_id:optional,
+				count:required, 
+				curso:optional,
+				include_entities:optional,
+				skip_status:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+        
+		// make the call
+        return $this->doCall('lists/subscribers.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsSubscribersCreate()
+    public function listsSubscribersCreate($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('owner_screen_name', $parameters) || 
+			!array_key_exists('owner_id', $parameters) || 
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : owner_screen_name, owner_id, list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/subscribers/create.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsSubscribersShow()
+    public function listsSubscribersShow($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				user_id:required, 
+				screen_name:required,
+				owner_screen_name:optional,
+				owner_id:optional,
+				include_entities:optional,
+				skip_status:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters) || 
+			!array_key_exists('user_id', $parameters) || 
+			!array_key_exists('screen_name', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id, slug, user_id or screen_name');
+		}
+		
+        // make the call
+        return $this->doCall('lists/subscribers/show.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsSubscribersDestroy()
+    public function listsSubscribersDestroy($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required,
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/subscribers/destroy.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsMembersCreateAll()
+    public function listsMembersCreateAll($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				user_id:optional, 
+				screen_name:optional,
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/members/create_all.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsMembersShow()
+    public function listsMembersShow($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				user_id:required, 
+				screen_name:required,
+				owner_screen_name:optional,
+				owner_id:optional,
+				include_entities:optional,
+				skip_status:optional
+			]');
+        }
+		
+		if(!(
+            (array_key_exists('list_id', $parameters) && array_key_exists('user_id', $parameters)) ||
+            (array_key_exists('list_id', $parameters) && array_key_exists('screen_name', $parameters)) ||
+            (array_key_exists('slug', $parameters) && array_key_exists('owner_screen_name', $parameters) && array_key_exists('user_id', $parameters)) ||
+            (array_key_exists('slug', $parameters) && array_key_exists('owner_screen_name', $parameters) && array_key_exists('screen_name', $parameters)) ||
+            (array_key_exists('slug', $parameters) && array_key_exists('owner_id', $parameters) && array_key_exists('user_id', $parameters)) ||
+            (array_key_exists('slug', $parameters) && array_key_exists('owner_id', $parameters) && array_key_exists('screen_name', $parameters))
+        )) {
+            throw new Exception('Parameter required missing : list_id, slug, user_id or screen_name');
+        }
+		
+        // make the call
+        return $this->doCall('lists/members/show.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsMembers()
+    public function listsMembers($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required,
+				owner_screen_name:optional,
+				owner_id:optional,
+				count:optional,
+				curso:optional,
+				include_entities:optional,
+				skip_status:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) && 
+			(
+				!array_key_exists('slug', $parameters) ||
+                (
+					array_key_exists('slug', $parameters) && 
+					!array_key_exists('owner_screen_name', $parameters) && 
+					!array_key_exists('owner_id', $parameters)
+				)
+            )
+        ) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/members.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsMembersCreate()
+    public function listsMembersCreate($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				user_id:required, 
+				screen_name:required,
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters) || 
+			!array_key_exists('user_id', $parameters) || 
+			!array_key_exists('screen_name', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id, slug, user_id or screen_name');
+		}
+		
+        // make the call
+        return $this->doCall('lists/members/create.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsDestroy()
+    public function listsDestroy($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/destroy.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsUpdate()
+    public function listsUpdate($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				name:optional,
+				mode:optional,
+				description:optional,
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/update.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsCreate()
+    public function listsCreate($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				name:required,
+				mode:optional,
+				description:optional
+			]');
+        }
+		
+		if (!array_key_exists('name', $parameters)) {
+			throw new Exception('Parameter required missing : name');
+		}
+		
+        // make the call
+        return $this->doCall('lists/create.json', $parameters, true, 'POST');
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsShow()
+    public function listsShow($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required,
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) && (
+				!array_key_exists('slug', $parameters) ||
+                (
+					array_key_exists('slug', $parameters) && 
+					!array_key_exists('owner_screen_name', $parameters) && 
+					!array_key_exists('owner_id', $parameters)
+				)
+            )
+        ) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/show.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listSubscriptions()
+    public function listSubscriptions($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				user_id:optional, 
+				screen_name:optional, 
+				count:optional,
+				curso:optional
+			]');
+        }
+		
+        // make the call
+        return $this->doCall('lists/subscriptions.json', $parameters, true);
     }
 
-    /**
-     * Not implemented yet
-     */
-    public function listsMembersDestroyAll()
+    public function listsMembersDestroyAll($parameters = array())
     {
-        throw new Exception('Not implemented');
+		// validate
+        if (empty($parameters)) {
+            throw new Exception('One of these parameters must be provided. 
+			[
+				list_id:required, 
+				slug:required, 
+				user_id:optional, 
+				screen_name:optional,
+				owner_screen_name:optional,
+				owner_id:optional
+			]');
+        }
+		
+		if (
+			!array_key_exists('list_id', $parameters) || 
+			!array_key_exists('slug', $parameters)
+		) {
+			throw new Exception('Parameter required missing : list_id or slug');
+		}
+		
+        // make the call
+        return $this->doCall('lists/members/destroy_all.json', $parameters, true, 'POST');
     }
 
 // Saved Searches resources
